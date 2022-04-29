@@ -17,4 +17,6 @@ src/sorter.cpp
 src/timer.cpp)
 
 include_directories( ${includeDirs} )
-add_executable (example_sort src/main.cpp ${SRC})
+add_executable (example_sort src/main_sort.cpp ${SRC})
+add_executable (example_graph src/main_graph.cpp ${SRC})
+add_executable (example_memo src/main_memoization.cpp ${SRC})
