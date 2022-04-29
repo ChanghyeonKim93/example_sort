@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.8.1)
 project(example_sort)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14 -O2")
-set(CMAKE_BUILD_TYPE Debug)
+set(CMAKE_BUILD_TYPE Release)
 set(CMAKE_MODULE_PATH 
     ${CMAKE_MODULE_PATH} 
     ${CMAKE_CURRENT_SOURCE_DIR}
@@ -13,7 +13,8 @@ find_package(cmake_modules)
 set(includeDirs ${includeDirs} ${CMAKE_CURRENT_BINARY_DIR})
 set(includeDirs ${includeDirs} include)
 set(SRC ${SRC}
-src/sorter.cpp)
+src/sorter.cpp
+src/timer.cpp)
 
 include_directories( ${includeDirs} )
 add_executable (example_sort src/main.cpp ${SRC})
