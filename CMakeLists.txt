@@ -14,9 +14,12 @@ set(includeDirs ${includeDirs} ${CMAKE_CURRENT_BINARY_DIR})
 set(includeDirs ${includeDirs} include)
 set(SRC ${SRC}
 src/sorter.cpp
-src/timer.cpp)
+src/timer.cpp
+src/heap.cpp)
 
 include_directories( ${includeDirs} )
 add_executable (example_sort src/main_sort.cpp ${SRC})
 add_executable (example_graph src/main_graph.cpp ${SRC})
 add_executable (example_memo src/main_memoization.cpp ${SRC})
+add_executable (example_cache src/main_cache.cpp ${SRC})
+add_executable (example_heap src/main_heap.cpp ${SRC})
