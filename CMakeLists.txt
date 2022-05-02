@@ -15,7 +15,8 @@ set(includeDirs ${includeDirs} include)
 set(SRC ${SRC}
 src/sorter.cpp
 src/timer.cpp
-src/heap.cpp)
+src/heap.cpp
+src/graph.cpp)
 
 include_directories( ${includeDirs} )
 add_executable (example_sort src/main_sort.cpp ${SRC})
