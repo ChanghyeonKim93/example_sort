@@ -1,5 +1,6 @@
 #include "heap.h"
 
+#ifdef HHH
 MyHeap::MyHeap() : heap_size_(0) 
 {
     max_size_ = 1024;
@@ -68,3 +69,70 @@ unsigned long MyHeap::getIndexLeftChild(unsigned long idx_now){
 unsigned long MyHeap::getIndexRightChild(unsigned long idx_now){
     return (idx_now >> 1);
 }
+
+#endif
+
+MyHeap::MyHeap() 
+: MAX_HEAP_SIZE_(1024*1024), heap_size_(0)
+{
+    arr_ = new Node[MAX_HEAP_SIZE_];
+};
+
+MyHeap::~MyHeap(){
+    delete[] arr_;
+};
+
+void MyHeap::insert(const Node& input) 
+{
+    // 맨 뒤에 넣고, 부모노드 key랑 비교하면서 올라간다. 
+    unsigned long idx = (++heap_size_);
+    const Node& obj_cur = input;
+
+    while( idx != 1 && obj_cur.key > arr_[idx/2].key ) {
+        arr_[idx] = arr_[idx/2];
+        idx /= 2;
+    }
+
+    arr_[idx].id  = obj_cur.id;
+    arr_[idx].key = obj_cur.key;
+};
+
+Node MyHeap::pop(){
+    // 해야하는것: 
+    /*
+        루트 데이터를 뽑는다. 맨 뒤에 있던 데이터를 맨 위로 올리고, 아래로 내려간다.
+        자식 노드가 범위 내 있다면 둘중 더 큰놈을 고르고 해당 데이터랑 비교.
+        비교하는 녀석이 더 크면 
+    */
+    Node root     = arr_[1]; // root data
+    Node& obj_cur = arr_[heap_size_]; // 14.11
+    --heap_size_;
+
+    unsigned long parent = 1;
+    unsigned long child  = 2;
+    while(child <= heap_size_){
+        if(child + 1 <= heap_size_ && (arr_[child + 1].key > arr_[child].key) ){ 
+            // 자식이 두개 존재하는경우, 큰 놈의 인덱스로.
+            ++child;
+        }
+
+        if(obj_cur.key >= arr_[child].key){// 현재꺼가 더 크면 여기서 멈춤.
+            break;
+        }
+        arr_[parent].key = arr_[child].key; // 부모로 올려줌.
+        arr_[parent].id  = arr_[child].id; // 부모로 올려줌.
+
+        parent = child;
+        child *= 2;
+    }
+    arr_[parent] = obj_cur;
+
+    return root;
+};
+
+void MyHeap::showAll(){
+    std::cout << " SHOW ALL \n";
+    for(int i = 1; i <= heap_size_; ++i){
+        std::cout << i << ", " << arr_[i].key << std::endl;
+    }
+};

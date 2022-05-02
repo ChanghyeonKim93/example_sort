@@ -14,28 +14,37 @@ int main(){
     // 힙 원소삽입 : 
 
     MyHeap heap;
-    heap.insert(1);
-    heap.insert(5);
-    heap.insert(2);
-    heap.insert(6);
-    heap.insert(9);
-    heap.insert(15);
-    heap.insert(3);
-    heap.insert(111);
-    heap.insert(45);
-
-    heap.showHeap();
-    std::cout << "pop! : "<< heap.pop() <<std::endl;
-    std::cout << "pop! : "<< heap.pop() <<std::endl;
-    std::cout << "pop! : "<< heap.pop() <<std::endl;
-    std::cout << "pop! : "<< heap.pop() <<std::endl;
-    std::cout << "pop! : "<< heap.pop() <<std::endl;
-    std::cout << "pop! : "<< heap.pop() <<std::endl;
-    std::cout << "pop! : "<< heap.pop() <<std::endl;
-    heap.showHeap();
-
-
     
+    heap.insert(Node(1.42346));
+    heap.insert(Node(2.12346));
+    heap.insert(Node(1.76));
+    heap.insert(Node(0.28));
+    heap.insert(Node(9.11));
+    heap.insert(Node(4.11));
+    heap.insert(Node(7.11));
+    heap.insert(Node(14.91));
+    heap.insert(Node(14.21));
+    heap.insert(Node(14.31));
+    heap.insert(Node(14.71));
+    heap.insert(Node(14.81));
+
+    heap.showAll();
+    std::cout <<"\n\n";
+
+    std::cout << heap.pop().key <<std::endl;
+    std::cout << heap.pop().key <<std::endl;
+    std::cout << heap.pop().key <<std::endl;
+    std::cout << heap.pop().key <<std::endl;
+    std::cout << heap.pop().key <<std::endl;
+    std::cout << heap.pop().key <<std::endl;
+    std::cout << heap.pop().key <<std::endl;
+    std::cout << heap.pop().key <<std::endl;
+    std::cout << heap.pop().key <<std::endl;
+    std::cout << heap.pop().key <<std::endl;
+    std::cout << heap.pop().key <<std::endl;
+    std::cout << heap.pop().key <<std::endl;
+    heap.showAll();
+
     std::cout << "heap ends.\n";
     return 0;
-}
+};
